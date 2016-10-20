@@ -10,6 +10,7 @@ import com.jihf.view.R;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
   private Button verticalTextView;
   private Button couponView;
+  private Button scrollGridView;
 
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -22,6 +23,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     verticalTextView.setOnClickListener(this);
     couponView = (Button) findViewById(R.id.btn_couponView);
     couponView.setOnClickListener(this);
+     scrollGridView = (Button) findViewById(R.id.btn_scrollGridView);
+     scrollGridView.setOnClickListener(this);
   }
 
   @Override public void onClick(View view) {
@@ -33,6 +36,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
       case R.id.btn_couponView:
         //自定义优惠券
         jumpTo(CouponActivity.class);
+        break;
+      case R.id.btn_scrollGridView:
+        //自定义优惠券
+        jumpTo(HorizontalScrollGridViewActivity.class);
         break;
     }
   }
