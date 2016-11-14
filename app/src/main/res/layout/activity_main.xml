@@ -25,5 +25,14 @@
       android:layout_height="wrap_content"
       android:layout_margin="10dp"
       android:text="scrollGridView"/>
-
+  <Button
+      android:id="@+id/btn_location"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_margin="10dp"
+      android:text="scrollGridView"/>
+<com.jihf.view.CustomSlideButton.SlideButton
+    android:id="@+id/slideButton"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"/>
 </LinearLayout>
