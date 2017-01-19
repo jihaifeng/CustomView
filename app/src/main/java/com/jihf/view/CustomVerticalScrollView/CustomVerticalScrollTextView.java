@@ -1,6 +1,7 @@
 package com.jihf.view.CustomVerticalScrollView;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -37,7 +38,7 @@ public class CustomVerticalScrollTextView extends RelativeLayout {
   public CustomVerticalScrollTextView(Context context, AttributeSet attrs) {
     super(context, attrs);
     mContext = context;
-    setLayoutParams(new RelativeLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
+    setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
   }
 
   private void initView() {
@@ -50,12 +51,23 @@ public class CustomVerticalScrollTextView extends RelativeLayout {
     ll_more.setVisibility(View.GONE);
     iv_left.setVisibility(View.GONE);
     for (View view : data) {
+      if (null != view.getParent()) {
+        return;
+        //((ViewGroup) view.getParent()).removeView(view);
+      }
       viewFlipper.addView(view);
     }
-    findViewById(R.id.ll_more).setOnClickListener(new OnClickListener() {
+    ll_more.setOnClickListener(new OnClickListener() {
       @Override public void onClick(View v) {
         if (listener != null) {
-          listener.onMoreClick();
+          listener.onRightTextClick();
+        }
+      }
+    });
+    iv_left.setOnClickListener(new OnClickListener() {
+      @Override public void onClick(View view) {
+        if (listener != null) {
+          listener.onLeftImageClick();
         }
       }
     });
@@ -64,7 +76,7 @@ public class CustomVerticalScrollTextView extends RelativeLayout {
     //退出动画
     viewFlipper.setOutAnimation(getContext(), R.anim.vertical_scroll_view_out);
     //动画间隔
-    viewFlipper.setFlipInterval(2000);
+    viewFlipper.setFlipInterval(5000);
     viewFlipper.startFlipping();
   }
 
@@ -79,24 +91,25 @@ public class CustomVerticalScrollTextView extends RelativeLayout {
 
   //将HeadlineBean数据转换成View数据
   private void convertData(final List<ScrollTextDataBean> list) {
-    for (final ScrollTextDataBean bean : list) {
-      final ScrollTextDataBean textDataBean = bean;
+    for (int i = 0; i < list.size(); i++) {
+      final int k = i;
+      final ScrollTextDataBean textDataBean = list.get(i);
       final View view = LayoutInflater.from(mContext).inflate(R.layout.vertical_scroll_view_item, viewFlipper, false);
       final TextView tv_title = (TextView) view.findViewById(R.id.tv_content_title);
       final TextView tv_content = (TextView) view.findViewById(R.id.tv_content_desc);
       //设置内容左边文字
-      if (TextUtils.isEmpty(bean.contentTitle)) {
+      if (TextUtils.isEmpty(textDataBean.contentTitle)) {
         tv_title.setVisibility(View.GONE);
       } else {
         tv_title.setVisibility(View.VISIBLE);
-        tv_title.setText(bean.contentTitle);
+        tv_title.setText(textDataBean.contentTitle);
       }
       //设置内容文字
-      tv_content.setText(bean.contentDesc);
+      tv_content.setText(textDataBean.contentDesc);
       view.setOnClickListener(new OnClickListener() {
         @Override public void onClick(View v) {
           if (listener != null) {
-            listener.onContentClick(textDataBean);
+            listener.onContentClick(textDataBean, k);
           }
         }
       });
@@ -109,16 +122,31 @@ public class CustomVerticalScrollTextView extends RelativeLayout {
   }
 
   /**
-   * 设置左边图片是否显示
+   * 设置左边显示的图片
    */
-  public void setLeftImageVisibility(int visibility) {
-    iv_left.setVisibility(visibility);
+  public void setLeftImage(Drawable imageDrawable) {
+    if (null != iv_left && null != imageDrawable) {
+      iv_left.setImageDrawable(imageDrawable);
+      iv_left.setVisibility(View.VISIBLE);
+    }
   }
 
   /**
-   * 设置右边更多是否显示
+   * 设置右边显示的文字
    */
-  public void setRightMoreVisibility(int visibility) {
-    ll_more.setVisibility(visibility);
+  public void setRightText(String text) {
+    if (null != ll_more && null != tv_more) {
+      ll_more.setVisibility(View.VISIBLE);
+      tv_more.setText(TextUtils.isEmpty(text) ? "更多" : text);
+    }
+  }
+
+  /**
+   * 设置显示时间
+   */
+  public void setDuration(int duration) {
+    if (null != viewFlipper) {
+      viewFlipper.setFlipInterval(duration < 3 ? 3 : duration);
+    }
   }
 }

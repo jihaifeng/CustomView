@@ -4,64 +4,35 @@ import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.location.Location;
-import android.location.LocationManager;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
-import com.jihf.view.CustomSlideButton.OnToggleStateChangedListener;
-import com.jihf.view.CustomSlideButton.SlideButton;
+import android.widget.TextView;
+import com.jihf.view.CityPick.CityPickActivity;
 import com.jihf.view.R;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener,ActivityCompat.OnRequestPermissionsResultCallback {
   private Button verticalTextView;
   private Button couponView;
   private Button scrollGridView;
-  private Button location;
-
-  private SlideButton slideButton;
+  private Button city;
+  private Button netType;
+  private TextView tvNetType;
 
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
+    //初始化log日志类，并自定义log Tag
+    //Logger.init();
     initView();
-
-  }
-
-  private void getLocation() {
-    if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-      // 缺少权限
-      ActivityCompat.requestPermissions(this, new String[] { Manifest.permission.ACCESS_FINE_LOCATION }, 100);
-    } else {
-      //已有权限
-      getMyLocation();
-    }
-  }
-
-  @Override public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-    switch (requestCode) {
-      case 100:
-        if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-          //用户允许
-         getMyLocation();
-        } else {
-          //用户拒绝
-          Toast.makeText(this, "对不起，缺少权限", Toast.LENGTH_SHORT).show();
-        }
-        break;
-    }
-  }
-
-  private void getMyLocation() {
-    LocationManager  locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
-    Location location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-    double lat = location.getLatitude();
-    double lng = location.getLongitude();
-    Toast.makeText(this, lat + "\n" + lng, Toast.LENGTH_SHORT).show();
   }
 
   private void initView() {
@@ -71,19 +42,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     couponView.setOnClickListener(this);
     scrollGridView = (Button) findViewById(R.id.btn_scrollGridView);
     scrollGridView.setOnClickListener(this);
-    slideButton = (SlideButton) findViewById(R.id.slideButton);
-    location = (Button) findViewById(R.id.btn_location);
-    location.setOnClickListener(this);
-    slideButton.setToggleState(true);
-    slideButton.setOnToggleStateChangedListener(new OnToggleStateChangedListener() {
-      @Override public void onToggleStateChanged(boolean state) {
-        if (state) {
-          Toast.makeText(MainActivity.this, "true", Toast.LENGTH_SHORT).show();
-        } else {
-          Toast.makeText(MainActivity.this, "false", Toast.LENGTH_SHORT).show();
-        }
-      }
-    });
+    city = (Button) findViewById(R.id.btn_city);
+    city.setOnClickListener(this);
+    netType = (Button) findViewById(R.id.btn_netType);
+    netType.setOnClickListener(this);
+
+    tvNetType = (TextView) findViewById(R.id.tv_netType);
   }
 
   @Override public void onClick(View view) {
@@ -100,10 +64,50 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //自定义优惠券
         jumpTo(HorizontalScrollGridViewActivity.class);
         break;
-      case R.id.btn_location:
-        //定位
-        getLocation();
+      case R.id.btn_city:
+        //城市选择
+        jumpTo(CityPickActivity.class);
         break;
+      case R.id.btn_netType:
+        //网络类型
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_NETWORK_STATE) == PackageManager.PERMISSION_DENIED) {
+          ActivityCompat.requestPermissions(this, new String[] { Manifest.permission.ACCESS_NETWORK_STATE },100);
+        }else {
+          try {
+            tvNetType.setText(URLEncoder.encode(getNetType(),"UTF-8"));
+          } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+          }
+        }
+        break;
+
+    }
+  }
+
+  private String getNetType() {
+    ConnectivityManager connectMgr = (ConnectivityManager) this.getSystemService(Context.CONNECTIVITY_SERVICE);
+    NetworkInfo info = connectMgr.getActiveNetworkInfo();
+    if (info != null) {
+      if (info.getType() == 1) {
+        return TextUtils.isEmpty(info.getTypeName()) ? "未知" : info.getTypeName();
+      } else {
+        return TextUtils.isEmpty(info.getSubtypeName()) ? "未知" : info.getSubtypeName();
+      }
+    }
+    return "未知";
+  }
+
+  @Override public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+    if (requestCode == 100){
+      if (grantResults.length > 0){
+        getNetType();
+      }else {
+        try {
+          tvNetType.setText(URLEncoder.encode(getNetType(),"UTF-8"));
+        } catch (UnsupportedEncodingException e) {
+          e.printStackTrace();
+        }
+      }
     }
   }
 

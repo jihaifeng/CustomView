@@ -8,7 +8,9 @@ package com.jihf.view.CustomVerticalScrollView;
  * Mail：jihaifeng@raiyi.com
  */
 public interface VerticalScrollTextViewListener {
-  void onContentClick(ScrollTextDataBean bean);
+  void onContentClick(ScrollTextDataBean bean, int position);
 
-  void onMoreClick();
+  void onRightTextClick();
+
+  void onLeftImageClick();
 }
