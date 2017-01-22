@@ -53,7 +53,7 @@
         android:screenOrientation="portrait"
         />
     <activity
-        android:name=".Activity.VerticalTextViewActivity"
+        android:name=".Activity.SvgActivity"
         android:launchMode="singleTask"
         android:screenOrientation="portrait"
         />

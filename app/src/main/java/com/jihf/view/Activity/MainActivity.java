@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
   private Button scrollGridView;
   private Button city;
   private Button netType;
+  private Button svg;
   private TextView tvNetType;
 
   @Override protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +47,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     city.setOnClickListener(this);
     netType = (Button) findViewById(R.id.btn_netType);
     netType.setOnClickListener(this);
+    svg = (Button) findViewById(R.id.btn_svg);
+    svg.setOnClickListener(this);
 
     tvNetType = (TextView) findViewById(R.id.tv_netType);
   }
@@ -79,6 +82,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             e.printStackTrace();
           }
         }
+        break;
+      case R.id.btn_svg:
+        //svgView
+        jumpTo(SvgActivity.class);
         break;
 
     }
