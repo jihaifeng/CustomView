@@ -25,7 +25,9 @@ public class SvgActivity extends AppCompatActivity {
     setContentView(R.layout.activity_svg);
     svgView = (SvgView) findViewById(R.id.svgView);
     show = (Button) findViewById(R.id.show);
-
+    //svgView.useNaturalColors();
+    svgView.setFillAfter(true);
+    svgView.setSvgResource(R.raw.monitor);
     show.setOnClickListener(new View.OnClickListener() {
       @Override public void onClick(View v) {
         show();
@@ -34,11 +36,11 @@ public class SvgActivity extends AppCompatActivity {
   }
 
   private void show() {
-    svgView.getPathAnimator().
-        //svgView.getSequentialPathAnimator().
-            delay(100).
-        duration(3000).
-        interpolator(new AccelerateDecelerateInterpolator()).
+    svgView.getPathAnimator()
+        //延迟多久开始播放
+        .delay(100)
+        // 动画播放速率
+        .duration(5000).interpolator(new AccelerateDecelerateInterpolator()).
         start();
   }
 }

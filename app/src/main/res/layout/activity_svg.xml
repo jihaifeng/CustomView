@@ -15,7 +15,6 @@
       android:id="@+id/svgView"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
-      app:pathColor="@android:color/holo_red_light"
       app:pathWidth="5dp"
       app:svg="@raw/ironman_white"/>
 
