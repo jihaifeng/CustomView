@@ -14,7 +14,6 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import com.jihf.view.CityPick.CityPickActivity;
 import com.jihf.view.R;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;

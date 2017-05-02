@@ -48,7 +48,7 @@
         android:screenOrientation="portrait"
         />
     <activity
-        android:name=".CityPick.CityPickActivity"
+        android:name=".Activity.CityPickActivity"
         android:launchMode="singleTask"
         android:screenOrientation="portrait"
         />

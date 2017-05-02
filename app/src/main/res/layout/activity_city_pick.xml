@@ -5,13 +5,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-  <me.yokeyword.indexablerv.IndexableLayout
-      android:id="@+id/city_root"
-      android:layout_width="match_parent"
-      android:layout_height="match_parent"
-      app:indexBar_layout_width="24dp"
-      app:indexBar_textColor="@android:color/black"
-      app:indexBar_textSpace="8dp"/>
 
   <android.support.v7.widget.RecyclerView
       android:id="@+id/ry_city"

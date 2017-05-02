@@ -37,7 +37,7 @@
       <TextView
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:padding="5dp"
+          android:paddingTop="5dp"
           android:text="编号:11223124123213131"
           android:textSize="12dp"
           />
@@ -45,7 +45,7 @@
       <TextView
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:padding="5dp"
+          android:paddingTop="5dp"
           android:text="编号:11223124123213131"
           android:textSize="12dp"
           />
@@ -53,7 +53,6 @@
       <TextView
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:paddingLeft="5dp"
           android:paddingTop="5dp"
           android:text="截止日期:2001-09-07"
           android:textSize="12dp"

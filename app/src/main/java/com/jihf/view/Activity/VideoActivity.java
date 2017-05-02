@@ -32,7 +32,6 @@ public class VideoActivity extends AppCompatActivity {
   @OnClick ({ R.id.btn_start, R.id.vv_show }) public void onClick(View view) {
     switch (view.getId()) {
       case R.id.btn_start:
-        vvShow.setU
         vvShow.start();
         break;
       case R.id.vv_show:

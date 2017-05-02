@@ -1,4 +1,4 @@
-package com.jihf.view.CityPick;
+package com.jihf.view.Activity;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -13,6 +13,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
+import com.jihf.view.CityPick.CityBean;
+import com.jihf.view.CityPick.CityListBean;
+import com.jihf.view.CityPick.CitySortBean;
+import com.jihf.view.CityPick.ReadAssets;
+import com.jihf.view.CityPick.RyCityContentAdapter;
+import com.jihf.view.CityPick.RyCityTitleAdapter;
 import com.jihf.view.R;
 import java.util.ArrayList;
 import java.util.List;
@@ -28,17 +34,14 @@ import me.yokeyword.indexablerv.SimpleHeaderAdapter;
  * Mail：jihaifeng@raiyi.com
  */
 public class CityPickActivity extends AppCompatActivity {
-  ////城市数据列表
-  //@BindView(R.id.ry_city)
+  public static final String TAG = CityPickActivity.class.getSimpleName().trim();
+  //城市数据列表
   RecyclerView ryCity;
-  ////数据异常提示
-  //@BindView(R.id.tv_noCityResult)
+  //数据异常提示
   TextView tvNoCityResult;
-  ////数据加载进度条
-  //@BindView(R.id.pb_city)
+  //数据加载进度条
   ProgressBar pbCity;
-  ////索引
-  //@BindView(R.id.city_root)
+  //索引
   IndexableLayout cityRoot;
 
   private List<CityListBean> hotCityBean = new ArrayList<>();
@@ -131,8 +134,8 @@ public class CityPickActivity extends AppCompatActivity {
     ryCityTitleAdapter.setDatas(allCityBean, new IndexableAdapter.IndexCallback<CityListBean>() {
           @Override public void onFinished(List<CityListBean> datas) {
             // 数据处理完成后回调
-            Log.i("onBindViewHolder", "onFinished: " + datas.get(0));
-            Log.i("onBindViewHolder", "onFinished: " + allCityBean.get(0));
+            Log.i(TAG, "onFinished: " + datas.get(0));
+            Log.i(TAG, "onFinished: " + allCityBean.get(0));
             ryCityContentAdapter.setData(datas);
           }
         });

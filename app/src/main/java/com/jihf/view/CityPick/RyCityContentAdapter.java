@@ -2,6 +2,7 @@ package com.jihf.view.CityPick;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +19,7 @@ import java.util.List;
  * Mail：jihaifeng@raiyi.com
  */
 public class RyCityContentAdapter extends RecyclerView.Adapter<RyCityContentAdapter.RyCityItemViewHolder> {
+  public static final String TAG = RyCityContentAdapter.class.getSimpleName().trim();
   private Context mContext;
   private List<CityListBean> mList = new ArrayList<>();
 
@@ -36,8 +38,8 @@ public class RyCityContentAdapter extends RecyclerView.Adapter<RyCityContentAdap
   }
 
   @Override public void onBindViewHolder(RyCityItemViewHolder holder, int position) {
-    //Log.i("onBindViewHolder", "onBindViewHolder: " + mList.get(position).sName);
-    //holder.tvCitySName.setText(mList.get(position).sName);
+    Log.i(TAG, "onBindViewHolder: " + mList.get(position).sName);
+    holder.tvCitySName.setText(mList.get(position).sName);
   }
 
   @Override public int getItemCount() {
