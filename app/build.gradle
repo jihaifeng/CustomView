@@ -31,13 +31,13 @@ dependencies {
   compile 'com.android.support:appcompat-v7:25.1.1'
   testCompile 'junit:junit:4.12'
   //自定义recyclerview,城市，联系人字母排序
-//  compile 'me.yokeyword:indexablerecyclerview:1.0.5'
+  compile 'me.yokeyword:indexablerecyclerview:1.0.5'
   compile 'com.android.support:recyclerview-v7:25.1.1'
   //butterKnife
   compile 'com.jakewharton:butterknife:8.4.0'
   annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
   //数据解析
-//  compile 'com.google.code.gson:gson:2.4'
+  compile 'com.google.code.gson:gson:2.4'
   compile 'com.alibaba:fastjson:1.2.15'
   compile files('libs/androidsvg-1.2.1.jar')
   compile 'com.nineoldandroids:library:2.4.0'

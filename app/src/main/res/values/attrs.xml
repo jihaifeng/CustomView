@@ -1,11 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
   <declare-styleable name="SvgView">
-    <attr name="pathColor" format="color|reference"/>
-    <attr name="pathWidth" format="dimension|reference"/>
-    <attr name="svg" format="reference"/>
-    <attr name="fill" format="boolean"/>
-    <attr name="fillColor" format="color|reference"/>
-    <attr name="naturalColors" format="boolean"/>
+    <attr format="color|reference" name="pathColor"/>
+    <attr format="dimension|reference" name="pathWidth"/>
+    <attr format="reference" name="svg"/>
+    <attr format="boolean" name="fill"/>
+    <attr format="color|reference" name="fillColor"/>
+    <attr format="boolean" name="naturalColors"/>
+  </declare-styleable>
+  <!--彩虹进度条-->
+  <declare-styleable name="RainbowBar">
+    <attr format="color" name="rainbowBar_color_1"/>
+    <attr format="color" name="rainbowBar_color_2"/>
+    <attr format="color" name="rainbowBar_color_3"/>
+    <attr format="dimension" name="rainbowBar_height"/>
+    <attr format="dimension" name="rainbowBar_width"/>
+    <attr format="dimension" name="rainbowBar_space"/>
   </declare-styleable>
 </resources>

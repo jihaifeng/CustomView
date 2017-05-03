@@ -18,13 +18,15 @@ import com.jihf.view.R;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener,ActivityCompat.OnRequestPermissionsResultCallback {
+public class MainActivity extends AppCompatActivity
+    implements View.OnClickListener, ActivityCompat.OnRequestPermissionsResultCallback {
   private Button verticalTextView;
   private Button couponView;
   private Button scrollGridView;
   private Button city;
   private Button netType;
   private Button svg;
+  private Button rainbow;
   private TextView tvNetType;
 
   @Override protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +50,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     netType.setOnClickListener(this);
     svg = (Button) findViewById(R.id.btn_svg);
     svg.setOnClickListener(this);
+    rainbow = (Button) findViewById(R.id.btn_rainbow);
+    rainbow.setOnClickListener(this);
 
     tvNetType = (TextView) findViewById(R.id.tv_netType);
   }
@@ -72,11 +76,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         break;
       case R.id.btn_netType:
         //网络类型
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_NETWORK_STATE) == PackageManager.PERMISSION_DENIED) {
-          ActivityCompat.requestPermissions(this, new String[] { Manifest.permission.ACCESS_NETWORK_STATE },100);
-        }else {
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_NETWORK_STATE)
+            == PackageManager.PERMISSION_DENIED) {
+          ActivityCompat.requestPermissions(this, new String[] { Manifest.permission.ACCESS_NETWORK_STATE }, 100);
+        } else {
           try {
-            tvNetType.setText(URLEncoder.encode(getNetType(),"UTF-8"));
+            tvNetType.setText(URLEncoder.encode(getNetType(), "UTF-8"));
           } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
           }
@@ -86,7 +91,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //svgView
         jumpTo(SvgActivity.class);
         break;
-
+      case R.id.btn_rainbow:
+        jumpTo(RainbowBarActivity.class);
+        break;
     }
   }
 
@@ -103,13 +110,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     return "未知";
   }
 
-  @Override public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-    if (requestCode == 100){
-      if (grantResults.length > 0){
+  @Override
+  public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+    if (requestCode == 100) {
+      if (grantResults.length > 0) {
         getNetType();
-      }else {
+      } else {
         try {
-          tvNetType.setText(URLEncoder.encode(getNetType(),"UTF-8"));
+          tvNetType.setText(URLEncoder.encode(getNetType(), "UTF-8"));
         } catch (UnsupportedEncodingException e) {
           e.printStackTrace();
         }

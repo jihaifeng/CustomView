@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+import butterknife.ButterKnife;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 import com.jihf.view.CityPick.CityBean;
@@ -54,7 +55,7 @@ public class CityPickActivity extends AppCompatActivity {
   protected void onCreate(@Nullable Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_city_pick);
-    //ButterKnife.bind(CityPickActivity.this);
+    ButterKnife.bind(CityPickActivity.this);
     initView();
     initAdapter();
     getCityData();
@@ -64,12 +65,12 @@ public class CityPickActivity extends AppCompatActivity {
     ryCity = (RecyclerView) findViewById(R.id.ry_city);
     tvNoCityResult = (TextView) findViewById(R.id.tv_noCityResult);
     pbCity = (ProgressBar) findViewById(R.id.pb_city);
-    cityRoot = (IndexableLayout) findViewById(R.id.city_root);
+    //cityRoot = (IndexableLayout) findViewById(R.id.city_root);
   }
 
   private void initAdapter() {
     ryCityTitleAdapter = new RyCityTitleAdapter(CityPickActivity.this);
-    cityRoot.setAdapter(ryCityTitleAdapter);
+    //cityRoot.setAdapter(ryCityTitleAdapter);
     ryCityContentAdapter = new RyCityContentAdapter(CityPickActivity.this);
     ryCity.setLayoutManager(new LinearLayoutManager(CityPickActivity.this));
     ryCity.setHasFixedSize(true);

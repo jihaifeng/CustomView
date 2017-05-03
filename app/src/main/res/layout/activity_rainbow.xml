@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+  <com.jihf.view.RainbowBar.RainbowBar
+      android:layout_width="match_parent"
+      android:layout_height="5dp"
+      android:layout_centerVertical="true"
+      app:rainbowBar_color_1="#FF0000FF"
+      app:rainbowBar_color_2="#FF00FF00"
+      app:rainbowBar_color_3="#FFFF0000"
+      app:rainbowBar_height="5dp"
+      app:rainbowBar_space="20dp"
+      app:rainbowBar_width="60dp"/>
+
+</RelativeLayout>
