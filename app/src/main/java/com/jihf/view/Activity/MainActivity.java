@@ -11,15 +11,19 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import com.jihf.view.R;
+import com.jihf.view.submitButton.SubmitButton;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 
 public class MainActivity extends AppCompatActivity
     implements View.OnClickListener, ActivityCompat.OnRequestPermissionsResultCallback {
+  private SubmitButton submit;
+  private Button submitButton;
   private Button verticalTextView;
   private Button couponView;
   private Button scrollGridView;
@@ -30,6 +34,8 @@ public class MainActivity extends AppCompatActivity
   private Button snowfall;
   private TextView tvNetType;
 
+  private int i = 0;
+
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
@@ -39,6 +45,29 @@ public class MainActivity extends AppCompatActivity
   }
 
   private void initView() {
+    submit = (SubmitButton) findViewById(R.id.submit);
+    submit.setOnClickListener(new View.OnClickListener() {
+      @Override public void onClick(View v) {
+        //submitButton.startResultAnim();
+        //try {
+        //  Thread.sleep(3 * 1000);
+        //} catch (InterruptedException e) {
+        //  e.printStackTrace();
+        //}
+        Log.i("onClick", "onClick: " + i % 3);
+        //if (i % 3 == 0) {
+        //  submit.doResult(true);
+        //} else if (i % 3 == 1) {
+        //  submit.reset();
+        //} else {
+        //  submit.doResult(false);
+        //  //submitButton.reset();
+        //}
+        i++;
+      }
+    });
+    submitButton = (Button) findViewById(R.id.btn_submitbutton);
+    submitButton.setOnClickListener(this);
     verticalTextView = (Button) findViewById(R.id.btn_verticalTextView);
     verticalTextView.setOnClickListener(this);
     couponView = (Button) findViewById(R.id.btn_couponView);
@@ -99,6 +128,9 @@ public class MainActivity extends AppCompatActivity
         break;
       case R.id.btn_snowfall:
         jumpTo(SnowFallingActivity.class);
+        break;
+      case R.id.btn_submitbutton:
+        jumpTo(SubmitButtonActivity.class);
         break;
     }
   }

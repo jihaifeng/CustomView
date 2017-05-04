@@ -36,4 +36,24 @@
     <!--自动飘落，true 是 false 否-->
     <attr format="boolean" name="isAutoFalling"/>
   </declare-styleable>
+
+  <!--提交按钮-->
+  <declare-styleable name="SubmitButton">
+    <!--文字内容-->
+    <attr format="string" name="buttonText"/>
+    <!--初始颜色-->
+    <attr format="color" name="buttonColor"/>
+    <!--成功颜色-->
+    <attr format="color" name="succeedColor"/>
+    <!--失败颜色-->
+    <attr format="color" name="failedColor"/>
+    <!--文字大小-->
+    <attr format="dimension" name="buttonTextSize"/>
+    <attr format="color" name="buttonTextColor"/>
+    <!--样式-->
+    <attr format="enum" name="progressStyle">
+      <enum name="loading" value="0"/>
+      <enum name="progress" value="1"/>
+    </attr>
+  </declare-styleable>
 </resources>
