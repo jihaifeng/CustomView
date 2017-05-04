@@ -1,65 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-  <Button
-      android:id="@+id/btn_verticalTextView"
+  <LinearLayout
+      android:id="@+id/activity_main"
       android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:layout_margin="10dp"
-      android:text="verticalTextView"/>
+      android:layout_height="match_parent"
+      android:orientation="vertical">
 
-  <Button
-      android:id="@+id/btn_couponView"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:layout_margin="10dp"
-      android:text="couponView"/>
+    <Button
+        android:id="@+id/btn_verticalTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="verticalTextView"/>
 
-  <Button
-      android:id="@+id/btn_scrollGridView"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:layout_margin="10dp"
-      android:text="scrollGridView"/>
+    <Button
+        android:id="@+id/btn_couponView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="couponView"/>
 
-  <Button
-      android:id="@+id/btn_city"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:layout_margin="10dp"
-      android:text="city"/>
+    <Button
+        android:id="@+id/btn_scrollGridView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="scrollGridView"/>
 
-  <Button
-      android:id="@+id/btn_netType"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:layout_margin="10dp"
-      android:text="netType"/>
+    <Button
+        android:id="@+id/btn_city"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="city"/>
 
-  <Button
-      android:id="@+id/btn_svg"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:layout_margin="10dp"
-      android:text="svgView"/>
+    <Button
+        android:id="@+id/btn_netType"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="netType"/>
 
-  <Button
-      android:id="@+id/btn_rainbow"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:layout_margin="10dp"
-      android:text="rainbow"/>
+    <Button
+        android:id="@+id/btn_svg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="svgView"/>
 
-  <TextView
-      android:id="@+id/tv_netType"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:layout_margin="10dp"
-      />
+    <Button
+        android:id="@+id/btn_rainbow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="rainbow"/>
 
-</LinearLayout>
+    <Button
+        android:id="@+id/btn_snowfall"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="snowfall"/>
+
+    <TextView
+        android:id="@+id/tv_netType"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        />
+  </LinearLayout>
+</ScrollView>

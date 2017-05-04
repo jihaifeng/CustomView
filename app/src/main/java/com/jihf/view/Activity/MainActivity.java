@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity
   private Button netType;
   private Button svg;
   private Button rainbow;
+  private Button snowfall;
   private TextView tvNetType;
 
   @Override protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +53,8 @@ public class MainActivity extends AppCompatActivity
     svg.setOnClickListener(this);
     rainbow = (Button) findViewById(R.id.btn_rainbow);
     rainbow.setOnClickListener(this);
+    snowfall = (Button) findViewById(R.id.btn_snowfall);
+    snowfall.setOnClickListener(this);
 
     tvNetType = (TextView) findViewById(R.id.tv_netType);
   }
@@ -93,6 +96,9 @@ public class MainActivity extends AppCompatActivity
         break;
       case R.id.btn_rainbow:
         jumpTo(RainbowBarActivity.class);
+        break;
+      case R.id.btn_snowfall:
+        jumpTo(SnowFallingActivity.class);
         break;
     }
   }

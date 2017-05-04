@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+  <com.jihf.view.SnowFalling.FallingView
+      android:id="@+id/falling"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      app:fallingDelay="10"
+      app:fallingDensity="100"
+      app:fallingScale="1"
+      app:isAutoFalling="true"
+      app:fallingSrc="@drawable/snow_falling">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="260dp"
+        android:background="@drawable/bg2"/>
+  </com.jihf.view.SnowFalling.FallingView>
+
+  <Button
+      android:id="@+id/start"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:text="start"/>
+
+  <Button
+      android:id="@+id/cancel"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:text="cancel"/>
+
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="40dp"
+      android:gravity="center_vertical"
+      >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@+id/seek_size"
+        android:text="大小"
+        />
+
+    <SeekBar
+        android:id="@+id/size"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:max="10"
+        android:progress="3"
+        />
+
+  </LinearLayout>
+
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="40dp"
+      android:gravity="center_vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@+id/seek_v"
+        android:text="速度"
+        />
+
+    <SeekBar
+        android:id="@+id/speed"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:max="200"
+        android:progress="10"
+        />
+
+  </LinearLayout>
+
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="40dp"
+      android:gravity="center_vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@+id/seek_density"
+        android:text="密度"
+        />
+
+    <SeekBar
+        android:id="@+id/density"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:max="1000"
+        android:progress="80"
+        />
+
+  </LinearLayout>
+
+</LinearLayout>

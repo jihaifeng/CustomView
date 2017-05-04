@@ -56,6 +56,7 @@ public class RainbowBar extends View {
     paint = new Paint();
     //paint.setColor(rainbowBar_color_1);
     // 设置抗锯齿，如果不设置，加载位图的时候可能会出现锯齿状的边界，如果设置，边界就会变的稍微有点模糊，锯齿就看不到了
+    // 也可以设置 paint = new Paint(Paint.ANTI_ALIAS_FLAG);
     paint.setAntiAlias(true);
     // 画笔样式为空心时，设置空心画笔的宽度
     paint.setStrokeWidth(rainbowBar_height);
